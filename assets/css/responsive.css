@@ -1,0 +1,361 @@
+/* =====================================================
+   Green Leaf — Responsive Styles
+   Mobile-first breakpoints: 320px → 768px → 1024px+
+   ===================================================== */
+
+/* =====================================================
+   Tablet (768px+)
+   ===================================================== */
+
+@media (max-width: 768px) {
+  /* кнопка в summary скрыта на мобилке */
+  .cart-summary {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --container-padding: 24px;
+  }
+
+  h1 { font-size: 2.5rem; }
+  h2 { font-size: 2rem; }
+  h3 { font-size: 1.75rem; }
+
+  /* Header */
+  .header-inner {
+    height: 72px;
+  }
+
+  .search-bar {
+    display: block;
+  }
+
+  .burger-btn {
+    display: none;
+  }
+
+  .mobile-menu {
+    display: none !important;
+  }
+
+  .logo {
+    font-size: 1.375rem;
+  }
+
+  .logo-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  /* Products Grid */
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  /* Footer */
+  .footer-inner {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Auth */
+  .auth-card {
+    padding: 40px 36px;
+  }
+
+  .auth-header h1 {
+    font-size: 1.75rem;
+  }
+
+  /* Product Detail */
+  .product-detail {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .product-gallery {
+    aspect-ratio: 1;
+    position: sticky;
+    top: 96px;
+  }
+
+  .product-detail-title {
+    font-size: 2rem;
+  }
+
+  .product-detail-price {
+    font-size: 1.75rem;
+  }
+
+  .product-actions {
+    flex-direction: row;
+  }
+
+  .product-actions .btn {
+    flex: 1;
+  }
+
+  /* Cart */
+  .cart-layout {
+    grid-template-columns: 1fr 340px;
+    gap: 32px;
+    align-items: start;
+  }
+
+  .cart-item {
+    padding: 20px;
+  }
+
+  .cart-item-image {
+    width: 100px;
+    height: 100px;
+  }
+
+  .cart-summary {
+    position: sticky;
+    top: 96px;
+  }
+
+  /* Profile */
+  .profile-layout {
+    grid-template-columns: 320px 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+
+  .profile-card {
+    position: sticky;
+    top: 96px;
+  }
+
+  .profile-avatar {
+    width: 80px;
+    height: 80px;
+  }
+
+  .profile-avatar svg {
+    width: 40px;
+    height: 40px;
+  }
+
+  /* Order Detail */
+  .order-detail-header {
+    align-items: center;
+  }
+
+  .order-detail-id {
+    font-size: 1.75rem;
+  }
+
+  /* Page Title */
+  .page-title {
+    font-size: 2rem;
+  }
+
+  /* Form Row */
+  .form-row-desktop {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .form-row-desktop .form-group {
+    margin-bottom: 0;
+  }
+
+  .product-detail {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+
+  .product-actions {
+    position: sticky;
+    bottom: 0;
+  }
+
+
+  .cart-actions-bar {
+    display: none;
+  }
+}
+
+/* =====================================================
+   Desktop (1024px+)
+   ===================================================== */
+@media (min-width: 1024px) {
+  :root {
+    --container-padding: 32px;
+  }
+
+  /* Products Grid */
+  .products-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Footer */
+  .footer-inner {
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+  }
+
+  .footer {
+    padding: 56px 0 28px;
+  }
+
+  /* Search Bar */
+  .search-bar {
+    max-width: 480px;
+  }
+
+  /* Cart */
+  .cart-layout {
+    grid-template-columns: 1fr 380px;
+  }
+
+  /* Profile */
+  .profile-layout {
+    grid-template-columns: 360px 1fr;
+  }
+}
+
+/* =====================================================
+   Large Desktop (1200px+)
+   ===================================================== */
+@media (min-width: 1200px) {
+  /* Products Grid */
+  .products-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  /* Product Detail */
+  .product-detail {
+    gap: 56px;
+  }
+
+  .product-gallery svg {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+/* =====================================================
+   Small Mobile (< 375px)
+   ===================================================== */
+@media (max-width: 374px) {
+  :root {
+    --container-padding: 12px;
+  }
+
+  .auth-card {
+    padding: 24px 16px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .cart-item {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .cart-item-image {
+    width: 64px;
+    height: 64px;
+  }
+
+  .quantity-btn {
+    width: 28px;
+    height: 28px;
+  }
+
+  .quantity-value {
+    width: 32px;
+    font-size: 0.875rem;
+  }
+
+  .profile-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .btn-sm {
+    padding: 6px 12px;
+    font-size: 0.8125rem;
+  }
+}
+
+/* =====================================================
+   Print Styles
+   ===================================================== */
+@media print {
+  .header,
+  .footer,
+  .mobile-menu,
+  .btn,
+  .back-link,
+  .cart-summary .btn {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+
+  .page-wrapper {
+    min-height: auto;
+  }
+
+  .main-content {
+    padding: 0;
+  }
+
+  .card,
+  .cart-item,
+  .order-detail-card {
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+}
+
+/* =====================================================
+   Reduced Motion
+   ===================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* =====================================================
+   High Contrast Mode Support
+   ===================================================== */
+@media (prefers-contrast: high) {
+  :root {
+    --green-primary: #006400;
+    --green-dark: #004d00;
+    --green-text: #003300;
+  }
+
+  .btn-primary {
+    border: 2px solid var(--green-dark);
+  }
+
+  .form-input {
+    border-width: 2px;
+  }
+
+  .card,
+  .cart-item,
+  .order-card {
+    border: 1px solid var(--green-dark);
+  }
+}

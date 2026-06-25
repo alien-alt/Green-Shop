@@ -1,0 +1,297 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Корзина — Green Shop</title>
+  <meta name="description" content="Ваша корзина покупок Green Shop. Оформите заказ на натуральную органическую косметику.">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+</head>
+<body>
+  <div class="page-wrapper">
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <div class="header-inner">
+          <a href="{% url "home" %}" class="logo">
+            <svg class="logo-icon" viewBox="0 0 32 32" fill="currentColor">
+              <path d="M16 2C8.5 2 4 8 4 14c0 4 2 7.5 5 9.5V28c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2v-4.5c3-2 5-5.5 5-9.5 0-6-4.5-12-12-12z"/>
+            </svg>
+            Green Shop
+          </a>
+          <div class="search-bar">
+            <div class="search-bar-wrapper">
+              <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"/>
+                <path d="M21 21l-4.35-4.35"/>
+              </svg>
+              <input type="text" placeholder="Поиск товаров...">
+            </div>
+          </div>
+          <div class="header-actions">
+            <a href="{% url "cart" %}" class="header-btn" title="Корзина">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="9" cy="21" r="1"/>
+                <circle cx="20" cy="21" r="1"/>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+              </svg>
+              <span class="cart-badge hidden">0</span>
+            </a>
+            <a href="profile.html" class="header-btn" title="Профиль">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+              </svg>
+            </a>
+            <button class="burger-btn" aria-label="Меню">
+              <span class="burger-line"></span>
+              <span class="burger-line"></span>
+              <span class="burger-line"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <nav class="mobile-menu">
+      <div class="mobile-search">
+        <div class="search-bar" style="display: block; max-width: none;">
+          <div class="search-bar-wrapper">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"/>
+              <path d="M21 21l-4.35-4.35"/>
+            </svg>
+            <input type="text" placeholder="Поиск товаров...">
+          </div>
+        </div>
+      </div>
+      <div class="mobile-menu-nav">
+        <a href="index.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            <polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+          Главная
+        </a>
+        <a href="cart.html" class="active">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="9" cy="21" r="1"/>
+            <circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+          </svg>
+          Корзина
+        </a>
+        <a href="profile.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+          Профиль
+        </a>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="container">
+        <div class="page-title-section">
+          <h1 class="page-title">Корзина</h1>
+        </div>
+
+        <div class="cart-layout">
+          <div class="cart-items">
+
+            {% for item in items %}
+            <!-- Товар 1 -->
+            <div class="cart-item">
+              <div class="cart-item-image">
+                <div class="cart-item-image">
+                  <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                </div>
+              </div>
+              <div class="cart-item-info">
+                <h4 class="cart-item-title">{{ item.product.name }}</h4>
+                <p class="cart-item-options">500 мл</p>
+                <div class="cart-item-bottom">
+                  <div class="quantity-control">
+                    <button class="quantity-btn">−</button>
+                    <span class="quantity-value">1</span>
+                    <button class="quantity-btn">+</button>
+                  </div>
+                  <span class="cart-item-price">{{ item.product.price }}</span>
+                </div>
+              </div>
+              <button class="cart-item-remove" title="Удалить" data-slug="{{ item.product.slug }}">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="3 6 5 6 21 6"/>
+                  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                </svg>
+              </button>
+            </div>
+            {% endfor %}
+
+            <!-- Товар 2 -->
+            <div class="cart-item">
+              <div class="cart-item-image">
+                <svg viewBox="0 0 32 32" fill="currentColor">
+                  <path d="M16 2C8.5 2 4 8 4 14c0 4 2 7.5 5 9.5V28c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2v-4.5c3-2 5-5.5 5-9.5 0-6-4.5-12-12-12z"/>
+                </svg>
+              </div>
+              <div class="cart-item-info">
+                <h4 class="cart-item-title">Увлажняющий крем для лица</h4>
+                <p class="cart-item-options">50 мл</p>
+                <div class="cart-item-bottom">
+                  <div class="quantity-control">
+                    <button class="quantity-btn">−</button>
+                    <span class="quantity-value">1</span>
+                    <button class="quantity-btn">+</button>
+                  </div>
+                  <span class="cart-item-price">1 200 сом</span>
+                </div>
+              </div>
+              <button class="cart-item-remove" title="Удалить">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="3 6 5 6 21 6"/>
+                  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                </svg>
+              </button>
+            </div>
+
+            <!-- Товар 3 -->
+            <div class="cart-item">
+              <div class="cart-item-image">
+                <svg viewBox="0 0 32 32" fill="currentColor">
+                  <path d="M16 2C8.5 2 4 8 4 14c0 4 2 7.5 5 9.5V28c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2v-4.5c3-2 5-5.5 5-9.5 0-6-4.5-12-12-12z"/>
+                </svg>
+              </div>
+              <div class="cart-item-info">
+                <h4 class="cart-item-title">Бамбуковая зубная щётка</h4>
+                <p class="cart-item-options">Натуральный</p>
+                <div class="cart-item-bottom">
+                  <div class="quantity-control">
+                    <button class="quantity-btn">−</button>
+                    <span class="quantity-value">2</span>
+                    <button class="quantity-btn">+</button>
+                  </div>
+                  <span class="cart-item-price">700 сом</span>
+                </div>
+              </div>
+              <button class="cart-item-remove" title="Удалить">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="3 6 5 6 21 6"/>
+                  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                </svg>
+              </button>
+            </div>
+
+          </div>
+
+          <div class="cart-summary">
+            <h3>Итого</h3>
+            <div class="summary-row">
+              <span>Подытог</span>
+              <span>2 750 сом</span>
+            </div>
+            <div class="summary-row">
+              <span>Доставка</span>
+              <span>150 сом</span>
+            </div>
+            <div class="summary-row total">
+              <span>Всего</span>
+              <span>2 900 сом</span>
+            </div>
+            <button class="btn btn-primary btn-full btn-lg mt-3">
+              Оформить заказ
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="cart-actions-bar" id="cart-actions-bar">
+          <div class="container">
+            <div class="cart-actions-bar-inner">
+              <div class="cart-actions-total">
+                <span class="cart-actions-label">Всего</span>
+                <span class="cart-actions-price">2 900 сом</span>
+              </div>
+              <button class="btn btn-primary btn-lg">
+                Оформить заказ
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-inner">
+          <div class="footer-section">
+            <a href="index.html" class="logo" style="color: white; margin-bottom: 16px;">
+              <svg class="logo-icon" viewBox="0 0 32 32" fill="currentColor" style="fill: white;">
+                <path d="M16 2C8.5 2 4 8 4 14c0 4 2 7.5 5 9.5V28c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2v-4.5c3-2 5-5.5 5-9.5 0-6-4.5-12-12-12z"/>
+              </svg>
+              Green Shop
+            </a>
+            <p>Натуральная и органическая косметика для тех, кто заботится о себе и природе.</p>
+          </div>
+          <div class="footer-section">
+            <h4>Контакты</h4>
+            <div class="footer-links">
+              <p>📞 +996 312 123-456</p>
+              <p>✉️ hello@greenleaf.kg</p>
+              <p>📍 Бишкек, ул. Чуй, 108</p>
+            </div>
+          </div>
+          <div class="footer-section">
+            <h4>Информация</h4>
+            <div class="footer-links">
+              <a href="#">О нас</a>
+              <a href="#">Доставка</a>
+              <a href="#">Возврат</a>
+            </div>
+          </div>
+          <div class="footer-section">
+            <h4>Категории</h4>
+            <div class="footer-links">
+              <a href="#">Уход за кожей</a>
+              <a href="#">Для волос</a>
+              <a href="#">Для тела</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2024 Green Shop. Все права защищены.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="{% static 'js/main.js' %}"></script>
+  <script>
+    // панель на странице корзины
+    const cartBar = document.getElementById('cart-actions-bar');
+    if (cartBar) {
+      const footer = document.querySelector('.footer');
+
+      function updateCartBar() {
+        const footerTop = footer.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+
+        if (footerTop <= windowHeight) {
+          cartBar.classList.add('is-absolute');
+        } else {
+          cartBar.classList.remove('is-absolute');
+        }
+      }
+
+      window.addEventListener('scroll', updateCartBar);
+      updateCartBar();
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtualenv
+venv/
+.env/
+env/
+
+# Django
+db.sqlite3
+media/
+
+# Static collected files
+staticfiles/
+
+# Environment variables
+.env
+.env.*
+
+# Neovim
+.nvim/
+pyrightconfig.json
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Testing
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Type checkers
+.mypy_cache/
+.pyright/
+.ruff_cache/
+
+# Build
+build/
+dist/
+*.egg-info/
+
+# Local settings
+local_settings.py
+
+# Uploads
+media/*
+!media/.gitkeep
